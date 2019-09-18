@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="clr-namespace:RBScoreKeeperMobile.Common"
+             mc:Ignorable="d"
+             x:Class="RBScoreKeeperMobile.Views.FlicPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <c:InverseBooleanConverter x:Key="InverseBooleanConverter"></c:InverseBooleanConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>    
+    
+    <ContentPage.Content>
+        <StackLayout x:Name="Root">
+            <Label Text="Flics"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <ListView ItemsSource="{Binding Flics}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Name}" WidthRequest="100" Margin="10"></Label>
+                                <Button Text="x" Command="{Binding Source={x:Reference Root}, Path=BindingContext.DeleteFlicCommand}" CommandParameter="{Binding }"></Button>
+                            </StackLayout>                            
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button 
+                IsVisible="{Binding AddingFlic, Converter={StaticResource InverseBooleanConverter}}"
+                Text="Add Flic" Command="{Binding AddFlicCommand}"></Button>
+            <StackLayout IsVisible="{Binding AddingFlic}">
+                <Entry Text="{Binding NewFlicName}" Placeholder="New Button Name"></Entry>
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Save" Command="{Binding SaveFlicCommand}"></Button>
+                    <Button Text="Cancel" Command="{Binding CancelAddFlicCommand}"></Button>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

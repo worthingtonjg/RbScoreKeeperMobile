@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:c="clr-namespace:RBScoreKeeperMobile.Common"
+             mc:Ignorable="d"
+             x:Class="RBScoreKeeperMobile.Views.MatchPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <c:InverseBooleanConverter x:Key="InverseBooleanConverter"></c:InverseBooleanConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+            <Grid Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+        
+                <WebView 
+                    Grid.Row="0" 
+                    IsVisible="{Binding MatchIsActive}"
+                    Source="https://rbscorekeeper.azurewebsites.net"></WebView>
+                
+                <StackLayout 
+                    IsVisible="{Binding MatchIsActive}"
+                    Orientation="Horizontal" Grid.Row="1">
+                    <Button Text="End Match" Command="{Binding EndMatchCommand}"></Button>
+                    <Button Text="Cancel Match" Command="{Binding CancelMatchCommand}"></Button>
+                    <Button Text="Next Game" Command="{Binding NextGameCommand}"></Button>
+                    <Button Text="Reset Game" Command="{Binding ResetGameCommand}"></Button>
+                </StackLayout>
+
+                <!-- Match is not active-->
+                <StackLayout 
+                    IsVisible="{Binding MatchIsActive, Converter={StaticResource InverseBooleanConverter}}" 
+                    Grid.Row="1">
+                    <StackLayout Orientation="Horizontal">
+                        <Label FontAttributes="Bold">Select 2 -</Label>
+                        <Label Text="{Binding FlicCount}" FontAttributes="Bold" />
+                        <Label FontAttributes="Bold">Players:</Label>
+                    </StackLayout>
+                    
+                    <ListView ItemsSource="{Binding Players}" SelectionMode="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding Name}" WidthRequest="300"></Label>
+                                        <CheckBox IsChecked="{Binding Selected}" Color="DarkGray"></CheckBox>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Button Text="Start Match" Command="{Binding StartMatchCommand}"></Button>
+                </StackLayout>
+
+            </Grid>
+    </ContentPage.Content>
+</ContentPage>
