@@ -13,10 +13,8 @@
     </ContentPage.Resources>    
     
     <ContentPage.Content>
-        <StackLayout x:Name="Root">
-            <Label Text="Flics"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout x:Name="Root" Margin="5">
+            <Label Text="Flic Management" FontAttributes="Bold" />
             <ListView ItemsSource="{Binding Flics}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -34,10 +32,10 @@
                 IsVisible="{Binding AddingFlic, Converter={StaticResource InverseBooleanConverter}}"
                 Text="Add Flic" Command="{Binding AddFlicCommand}"></Button>
             <StackLayout IsVisible="{Binding AddingFlic}">
-                <Entry Text="{Binding NewFlicName}" Placeholder="New Button Name"></Entry>
-                <StackLayout Orientation="Horizontal">
-                    <Button Text="Save" Command="{Binding SaveFlicCommand}"></Button>
+                <Entry Text="{Binding NewFlicName}" Placeholder="New Flic Name"></Entry>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                     <Button Text="Cancel" Command="{Binding CancelAddFlicCommand}"></Button>
+                    <Button Text="Save" Command="{Binding SaveFlicCommand}"></Button>
                 </StackLayout>
             </StackLayout>
         </StackLayout>

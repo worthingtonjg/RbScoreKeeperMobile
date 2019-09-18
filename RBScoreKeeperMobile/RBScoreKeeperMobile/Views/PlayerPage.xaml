@@ -13,10 +13,8 @@
     </ContentPage.Resources>
     
     <ContentPage.Content>
-        <StackLayout x:Name="Root">
-            <Label Text="Players"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout x:Name="Root" Margin="5">
+            <Label Text="Player Mangement" FontAttributes="Bold" />
             <ListView ItemsSource="{Binding Players}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -35,9 +33,9 @@
                 Text="Add Player" Command="{Binding AddPlayerCommand}"></Button>
             <StackLayout IsVisible="{Binding AddingPlayer}">
                 <Entry Text="{Binding NewPlayerName}" Placeholder="New Player Name"></Entry>
-                <StackLayout Orientation="Horizontal">
-                    <Button Text="Save" Command="{Binding SavePlayerCommand}"></Button>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                     <Button Text="Cancel" Command="{Binding CancelAddPlayerCommand}"></Button>
+                    <Button Text="Save" Command="{Binding SavePlayerCommand}"></Button>
                 </StackLayout>
             </StackLayout>
         </StackLayout>

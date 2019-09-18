@@ -22,7 +22,7 @@
                 <WebView 
                     Grid.Row="0" 
                     IsVisible="{Binding MatchIsActive}"
-                    Source="https://rbscorekeeper.azurewebsites.net"></WebView>
+                    Source="{Binding RbScoreKeeperSite}"></WebView>
                 
                 <StackLayout 
                     IsVisible="{Binding MatchIsActive}"

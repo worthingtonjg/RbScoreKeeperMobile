@@ -14,6 +14,7 @@ namespace RBScoreKeeperMobile.ViewModels
     {
         public bool MatchIsActive { get; set; }
         public Match Match { get; set; }
+        public string RbScoreKeeperSite { get; set; }
         public List<MatchPlayersViewModel> Players { get; set; }
         public int FlicCount { get; set; }
 
@@ -74,11 +75,13 @@ namespace RBScoreKeeperMobile.ViewModels
             var match = await HttpHelper.Instance.GetAsync<Match>("match");
             SetValue(() => Match, match);
             SetValue(() => MatchIsActive, match != null);
+            SetValue(() => RbScoreKeeperSite, string.Empty);
 
             if (!MatchIsActive)
             {
                 var players = await HttpHelper.Instance.GetListAsync<Player>("players");
                 SetValue(() => Players, players.Select(p => new MatchPlayersViewModel(p)).ToList());
+                SetValue(() => RbScoreKeeperSite, "https://rbscorekeeper.azurewebsites.net");
             }
         }
     }
