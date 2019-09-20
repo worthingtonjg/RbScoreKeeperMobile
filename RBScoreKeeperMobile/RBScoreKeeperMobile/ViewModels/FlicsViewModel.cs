@@ -42,18 +42,18 @@ namespace RBScoreKeeperMobile.ViewModels
 
         private async Task ShowAddFlicModal()
         {
-            await Navigation.PushModalAsync(new AddModal("Flic"));
+            await Navigation.PushAsync(new AddModal("Flic"));
         }
 
         private async Task DoSavePlayer(AddModalViewModel sender, string newFlicName)
         {
             await HttpHelper.Instance.PostAsync($"flics?name={newFlicName}", "");
-            await Navigation.PopModalAsync();
+            await Navigation.PopAsync();
         }
 
         private async Task CancelSavePlayer(AddModalViewModel sender)
         {
-            await Navigation.PopModalAsync();
+            await Navigation.PopAsync();
         }
     }
 }
