@@ -15,7 +15,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -100,7 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RBScoreKeeperMobile\RBScoreKeeperMobile.csproj">
-      <Project>{A1DA7695-EFFD-4BCB-A010-BFC7D765DFE4}</Project>
+      <Project>{AD950F14-620A-4452-8F84-D716672F3AF9}</Project>
       <Name>RBScoreKeeperMobile</Name>
     </ProjectReference>
   </ItemGroup>

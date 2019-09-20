@@ -13,14 +13,13 @@
     </ContentPage.Resources>    
     
     <ContentPage.Content>
-        <StackLayout x:Name="Root" Margin="5">
-            <Label Text="Flic Management" FontAttributes="Bold" />
+        <StackLayout x:Name="Root" Margin="10">
             <ListView ItemsSource="{Binding Flics}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid Margin="5">
-                                <Label Text="{Binding Name}" WidthRequest="100" VerticalOptions="Center"></Label>
+                            <Grid Margin="0,5">
+                                <Label Text="{Binding Name}" VerticalOptions="Center" Margin="20,0,0,0"></Label>
                                 <Button Text="x" Command="{Binding Source={x:Reference Root}, Path=BindingContext.DeleteFlicCommand}" CommandParameter="{Binding }"  HorizontalOptions="End"></Button>
                             </Grid>                            
                         </ViewCell>

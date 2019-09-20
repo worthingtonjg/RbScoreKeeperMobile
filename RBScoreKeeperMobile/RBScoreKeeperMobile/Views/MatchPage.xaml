@@ -13,7 +13,8 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-            <Grid Margin="5">
+        <Grid>
+            <Grid IsVisible="{Binding Loading, Converter={StaticResource InverseBooleanConverter}}" Margin="5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
@@ -57,7 +58,14 @@
                     </ListView>
                     <Button Text="Start Match" Command="{Binding StartMatchCommand}"></Button>
                 </StackLayout>
-
+               
             </Grid>
+
+            <ActivityIndicator
+                IsRunning="{Binding Loading}"
+                IsVisible="{Binding Loading}"
+                Grid.RowSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></ActivityIndicator>
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

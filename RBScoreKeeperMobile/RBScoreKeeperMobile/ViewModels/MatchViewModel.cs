@@ -12,6 +12,7 @@ namespace RBScoreKeeperMobile.ViewModels
 {
     public class MatchViewModel : BaseViewModel
     {
+        public bool Loading { get; set; }
         public bool MatchIsActive { get; set; }
         public Match Match { get; set; }
         public string RbScoreKeeperSite { get; set; }
@@ -26,6 +27,7 @@ namespace RBScoreKeeperMobile.ViewModels
 
         public MatchViewModel()
         {
+            SetValue(() => Loading, true);
             StartMatchCommand = new Command(async () => await DoStartMatchCommand());
             EndMatchCommand = new Command(async () => await DoEndMatchCommand());
             CancelMatchCommand = new Command(async () => await DoCancelMatchCommand());
@@ -69,13 +71,14 @@ namespace RBScoreKeeperMobile.ViewModels
 
         public async Task LoadAsync()
         {
+            SetValue(() => Loading, true);
+
             var flics = await HttpHelper.Instance.GetListAsync<Flic>("flics");
             SetValue(() => FlicCount, flics.Count);
 
             var match = await HttpHelper.Instance.GetAsync<Match>("match");
             SetValue(() => Match, match);
             SetValue(() => MatchIsActive, match != null);
-            SetValue(() => RbScoreKeeperSite, string.Empty);
 
             if (!MatchIsActive)
             {
@@ -83,6 +86,8 @@ namespace RBScoreKeeperMobile.ViewModels
                 SetValue(() => Players, players.Select(p => new MatchPlayersViewModel(p)).ToList());
                 SetValue(() => RbScoreKeeperSite, "https://rbscorekeeper.azurewebsites.net");
             }
+
+            SetValue(() => Loading, false);
         }
     }
 }

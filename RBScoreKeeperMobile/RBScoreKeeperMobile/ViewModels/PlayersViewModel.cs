@@ -22,7 +22,6 @@ namespace RBScoreKeeperMobile.ViewModels
             DeletePlayerCommand = new Command(async (o) => await DoDeletePlayerCommand(o));
 
             MessagingCenter.Subscribe<AddModalViewModel, string>(this, "DoSavePlayer", async(s, a) => await DoSavePlayer(s, a));
-            MessagingCenter.Subscribe<AddModalViewModel>(this, "CancelSavePlayer", async(s) => await CancelSavePlayer(s));
         }
 
         public async Task LoadAsync()
@@ -33,18 +32,13 @@ namespace RBScoreKeeperMobile.ViewModels
 
         private async Task ShowAddPlayerModal()
         {
-            await Navigation.PushModalAsync(new AddModal("Player"));
+            await Navigation.PushAsync(new AddModal("Player"));
         }
 
         private async Task DoSavePlayer(AddModalViewModel sender, string newPlayerName)
         {
             await HttpHelper.Instance.PostAsync($"players?name={newPlayerName}", "");
-            await Navigation.PopModalAsync();
-        }
-
-        private async Task CancelSavePlayer(AddModalViewModel sender)
-        {
-            await Navigation.PopModalAsync();
+            await Navigation.PopAsync();
         }
 
         private async Task DoDeletePlayerCommand(object o)

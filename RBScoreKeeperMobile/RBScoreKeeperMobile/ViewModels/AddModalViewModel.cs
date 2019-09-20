@@ -17,7 +17,6 @@ namespace RBScoreKeeperMobile.ViewModels
             get { return $"New {Type} Name"; }
         }
 
-        public Command CancelCommand { get; set; }
         public Command SaveCommand { get; set; }
         
         public AddModalViewModel(INavigation navigation, string type)
@@ -26,7 +25,6 @@ namespace RBScoreKeeperMobile.ViewModels
             Type = type;
 
             SaveCommand = new Command(() => MessagingCenter.Send(this, $"DoSave{Type}", Name));
-            CancelCommand = new Command(() => MessagingCenter.Send(this, $"CancelSave{Type}"));
         }
     }
 }

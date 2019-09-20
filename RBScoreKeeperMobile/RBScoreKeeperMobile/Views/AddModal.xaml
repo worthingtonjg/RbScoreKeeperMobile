@@ -5,13 +5,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="RBScoreKeeperMobile.Views.AddModal">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Command="{Binding SaveCommand}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout Margin="5">
+        <StackLayout Margin="5">            
             <Entry Text="{Binding Name}" Placeholder="{Binding NamePlaceholder}"></Entry>
-            <Grid >
-                <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="Start"></Button>
-                <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="End"></Button>
-            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
