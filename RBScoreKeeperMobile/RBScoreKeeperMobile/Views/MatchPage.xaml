@@ -59,8 +59,7 @@
                 </StackLayout>
 
                 <Grid BackgroundColor="White" IsVisible="{Binding Loading}" Grid.RowSpan="2">
-                    <ActivityIndicator IsRunning="True"
-                    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></ActivityIndicator>
+                    <ActivityIndicator IsRunning="{Binding Loading}" HorizontalOptions="Center" VerticalOptions="Center"></ActivityIndicator>
                 </Grid>
         </Grid>
     </ContentPage.Content>
