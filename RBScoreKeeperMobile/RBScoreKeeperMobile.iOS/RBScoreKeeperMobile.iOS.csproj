@@ -151,4 +151,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\tab_users%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tab_match.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tab_match%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tab_match%403x.png" />
+  </ItemGroup>
 </Project>
