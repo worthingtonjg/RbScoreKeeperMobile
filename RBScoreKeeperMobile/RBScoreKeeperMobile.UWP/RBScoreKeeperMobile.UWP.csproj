@@ -103,6 +103,10 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\delete16.png" />
+    <Content Include="Assets\delete32.png" />
+    <Content Include="Assets\delete64.png" />
+    <Content Include="Assets\delete96.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />

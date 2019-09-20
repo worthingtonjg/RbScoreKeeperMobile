@@ -25,9 +25,12 @@
                     Source="{Binding RbScoreKeeperSite}"></WebView>
                 
                 <StackLayout 
-                    IsVisible="{Binding MatchIsActive}"
-                    Orientation="Horizontal" Grid.Row="1">
-                    <Button Text="End Match" Command="{Binding EndMatchCommand}"></Button>
+                    IsVisible="{Binding MatchIsActive}" Grid.Row="1">
+                        <StackLayout.Orientation>
+                            <OnPlatform x:TypeArguments="StackOrientation" iOS="Vertical" Android="Horizontal"  />
+                        </StackLayout.Orientation>
+
+                <Button Text="End Match" Command="{Binding EndMatchCommand}"></Button>
                     <Button Text="Cancel Match" Command="{Binding CancelMatchCommand}"></Button>
                     <Button Text="Next Game" Command="{Binding NextGameCommand}"></Button>
                     <Button Text="Reset Game" Command="{Binding ResetGameCommand}"></Button>
