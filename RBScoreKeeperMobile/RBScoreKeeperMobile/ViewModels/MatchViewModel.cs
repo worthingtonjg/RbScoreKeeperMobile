@@ -84,9 +84,9 @@ namespace RBScoreKeeperMobile.ViewModels
             {
                 var players = await HttpHelper.Instance.GetListAsync<Player>("players");
                 SetValue(() => Players, players.Select(p => new MatchPlayersViewModel(p)).ToList());
-                SetValue(() => RbScoreKeeperSite, "https://rbscorekeeper.azurewebsites.net");
             }
 
+            SetValue(() => RbScoreKeeperSite, "https://rbscorekeeper.azurewebsites.net");
             SetValue(() => Loading, false);
         }
     }

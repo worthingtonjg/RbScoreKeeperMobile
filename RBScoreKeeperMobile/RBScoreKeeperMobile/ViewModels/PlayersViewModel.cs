@@ -45,7 +45,7 @@ namespace RBScoreKeeperMobile.ViewModels
         {
             Player p = o as Player;
 
-            bool confirm = await Page.DisplayAlert("Confirm Delete", $"Delete: {p.Name}", "Accept", "Cancel");
+            bool confirm = await Page.DisplayAlert("Confirm Delete", $"Delete Player: {p.Name}", "Accept", "Cancel");
             if (!confirm) return;
 
             await HttpHelper.Instance.DeleteAsync($"players/{p.PlayerId}");
