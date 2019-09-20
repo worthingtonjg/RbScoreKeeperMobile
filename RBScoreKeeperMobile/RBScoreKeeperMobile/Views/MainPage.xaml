@@ -22,7 +22,7 @@
         <NavigationPage Title="Players">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="iOS" Value="tab_about.png"/>
+                    <On Platform="iOS" Value="tab_users.png"/>
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
@@ -33,7 +33,7 @@
         <NavigationPage Title="Flics">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="iOS" Value="tab_about.png"/>
+                    <On Platform="iOS" Value="tab_flic.png"/>
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
