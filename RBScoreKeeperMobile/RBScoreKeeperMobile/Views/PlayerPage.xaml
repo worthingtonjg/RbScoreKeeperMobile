@@ -19,25 +19,16 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding Name}" WidthRequest="100" Margin="10"></Label>
-                                <Button Text="x" Command="{Binding Source={x:Reference Root}, Path=BindingContext.DeletePlayerCommand}" CommandParameter="{Binding }"></Button>
-                            </StackLayout>
+                            <Grid Margin="5">
+                                <Label Text="{Binding Name}" WidthRequest="100" VerticalOptions="Center"></Label>
+                                <Button Text="x" Command="{Binding Source={x:Reference Root}, Path=BindingContext.DeletePlayerCommand}" CommandParameter="{Binding }" HorizontalOptions="End"></Button>
+                            </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            
-            <Button 
-                IsVisible="{Binding AddingPlayer, Converter={StaticResource InverseBooleanConverter}}"
-                Text="Add Player" Command="{Binding AddPlayerCommand}"></Button>
-            <StackLayout IsVisible="{Binding AddingPlayer}">
-                <Entry Text="{Binding NewPlayerName}" Placeholder="New Player Name"></Entry>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                    <Button Text="Cancel" Command="{Binding CancelAddPlayerCommand}"></Button>
-                    <Button Text="Save" Command="{Binding SavePlayerCommand}"></Button>
-                </StackLayout>
-            </StackLayout>
+
+            <Button Text="Add Player" Command="{Binding ShowAddPlayerModalCommand}"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
-
-using Xamarin.Forms;
-
-using RBScoreKeeperMobile.Models;
-using RBScoreKeeperMobile.Services;
 using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
+using Xamarin.Forms;
 
 namespace RBScoreKeeperMobile.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
+        protected INavigation Navigation;
+
         bool isBusy = false;
         public bool IsBusy
         {

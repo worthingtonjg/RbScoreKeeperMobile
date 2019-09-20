@@ -19,7 +19,7 @@ namespace RBScoreKeeperMobile.Views
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new FlicsViewModel();
+            BindingContext = viewModel = new FlicsViewModel(this.Navigation);
         }
 
         protected async override void OnAppearing()

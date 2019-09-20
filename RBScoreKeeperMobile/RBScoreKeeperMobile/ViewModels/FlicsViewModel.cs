@@ -1,5 +1,6 @@
 ﻿using RBScoreKeeperMobile.Models;
 using RBScoreKeeperMobile.Services;
+using RBScoreKeeperMobile.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,49 +12,48 @@ namespace RBScoreKeeperMobile.ViewModels
     public class FlicsViewModel : BaseViewModel
     {
         public List<Flic> Flics { get; set; }
-        public bool AddingFlic { get; set; }
-        public string NewFlicName { get; set; }
-        public Command AddFlicCommand { get; set; }
+
+        public Command ShowAddFlicModalCommand { get; set; }
         public Command DeleteFlicCommand { get; set; }
-        public Command CancelAddFlicCommand { get; set; }
-        public Command SaveFlicCommand { get; set; }
 
-        public FlicsViewModel()
+        public FlicsViewModel(INavigation navigation)
         {
-            AddFlicCommand = new Command(() => {
-                SetValue(() => NewFlicName, string.Empty);
-                SetValue(() => AddingFlic, true);
-            });
+            Navigation = navigation;
 
-
-            CancelAddFlicCommand = new Command(() =>
-            {
-                SetValue(() => AddingFlic, false);
-            });
-
-            SaveFlicCommand = new Command(async () => await DoSaveFlicCommand());
+            ShowAddFlicModalCommand = new Command(async () => await ShowAddFlicModal());
             DeleteFlicCommand = new Command(async (o) => await DoDeleteFlicCommand(o));
+
+            MessagingCenter.Subscribe<AddModalViewModel, string>(this, "DoSaveFlic", async (s, a) => await DoSavePlayer(s, a));
+            MessagingCenter.Subscribe<AddModalViewModel>(this, "CancelSaveFlic", async (s) => await CancelSavePlayer(s));
+        }
+
+        public async Task LoadAsync()
+        {
+            var flics = await HttpHelper.Instance.GetListAsync<Flic>("flics");
+            SetValue(() => Flics, flics);
         }
 
         private async Task DoDeleteFlicCommand(object o)
         {
             Flic f = o as Flic;
             await HttpHelper.Instance.DeleteAsync($"flics/{f.FlicId}");
-            SetValue(() => AddingFlic, false);
             await LoadAsync();
         }
 
-        private async Task DoSaveFlicCommand()
+        private async Task ShowAddFlicModal()
         {
-            await HttpHelper.Instance.PostAsync($"flics?name={NewFlicName}", "");
-            SetValue(() => AddingFlic, false);
-            await LoadAsync();
+            await Navigation.PushModalAsync(new AddModal("Flic"));
         }
 
-        internal async Task LoadAsync()
+        private async Task DoSavePlayer(AddModalViewModel sender, string newFlicName)
         {
-            var flics = await HttpHelper.Instance.GetListAsync<Flic>("flics");
-            SetValue(() => Flics, flics);
+            await HttpHelper.Instance.PostAsync($"flics?name={newFlicName}", "");
+            await Navigation.PopModalAsync();
+        }
+
+        private async Task CancelSavePlayer(AddModalViewModel sender)
+        {
+            await Navigation.PopModalAsync();
         }
     }
 }

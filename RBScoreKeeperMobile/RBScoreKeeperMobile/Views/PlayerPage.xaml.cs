@@ -1,9 +1,4 @@
 ﻿using RBScoreKeeperMobile.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -19,7 +14,7 @@ namespace RBScoreKeeperMobile.Views
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new PlayersViewModel();
+            BindingContext = viewModel = new PlayersViewModel(this.Navigation);
         }
 
         protected async override void OnAppearing()

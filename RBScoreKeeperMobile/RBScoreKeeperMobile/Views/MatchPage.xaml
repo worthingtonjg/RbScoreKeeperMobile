@@ -47,9 +47,9 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}" WidthRequest="300"></Label>
-                                        <CheckBox IsChecked="{Binding Selected}" Color="DarkGray"></CheckBox>
+                                    <StackLayout Orientation="Horizontal" Margin="5">
+                                        <CheckBox IsChecked="{Binding Selected}" Color="DarkGray" WidthRequest="25" />
+                                        <Label Text="{Binding Name}" VerticalOptions="Center"></Label>
                                     </StackLayout>
                                 </ViewCell>
                             </DataTemplate>

@@ -19,25 +19,16 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding Name}" WidthRequest="100" Margin="10"></Label>
-                                <Button Text="x" Command="{Binding Source={x:Reference Root}, Path=BindingContext.DeleteFlicCommand}" CommandParameter="{Binding }"></Button>
-                            </StackLayout>                            
+                            <Grid Margin="5">
+                                <Label Text="{Binding Name}" WidthRequest="100" VerticalOptions="Center"></Label>
+                                <Button Text="x" Command="{Binding Source={x:Reference Root}, Path=BindingContext.DeleteFlicCommand}" CommandParameter="{Binding }"  HorizontalOptions="End"></Button>
+                            </Grid>                            
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
 
-            <Button 
-                IsVisible="{Binding AddingFlic, Converter={StaticResource InverseBooleanConverter}}"
-                Text="Add Flic" Command="{Binding AddFlicCommand}"></Button>
-            <StackLayout IsVisible="{Binding AddingFlic}">
-                <Entry Text="{Binding NewFlicName}" Placeholder="New Flic Name"></Entry>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                    <Button Text="Cancel" Command="{Binding CancelAddFlicCommand}"></Button>
-                    <Button Text="Save" Command="{Binding SaveFlicCommand}"></Button>
-                </StackLayout>
-            </StackLayout>
+            <Button Text="Add Flic" Command="{Binding ShowAddFlicModalCommand}"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

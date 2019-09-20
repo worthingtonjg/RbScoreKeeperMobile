@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="RBScoreKeeperMobile.Views.AddModal">
+    <ContentPage.Content>
+        <StackLayout Margin="5">
+            <Entry Text="{Binding Name}" Placeholder="{Binding NamePlaceholder}"></Entry>
+            <Grid >
+                <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="Start"></Button>
+                <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="End"></Button>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

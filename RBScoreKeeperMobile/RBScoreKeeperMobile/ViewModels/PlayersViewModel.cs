@@ -1,11 +1,7 @@
-﻿using Newtonsoft.Json;
-using RBScoreKeeperMobile.Models;
+﻿using RBScoreKeeperMobile.Models;
 using RBScoreKeeperMobile.Services;
-using System;
+using RBScoreKeeperMobile.Views;
 using System.Collections.Generic;
-using System.Net;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -14,49 +10,48 @@ namespace RBScoreKeeperMobile.ViewModels
     public class PlayersViewModel : BaseViewModel
     {
         public List<Player> Players { get; set; }
-        public bool AddingPlayer { get; set; }
-        public string NewPlayerName { get; set; }
-        public Command AddPlayerCommand { get; set; }
+        public Command ShowAddPlayerModalCommand { get; set; }
         public Command DeletePlayerCommand { get; set; }
-        public Command CancelAddPlayerCommand { get; set; }
-        public Command SavePlayerCommand { get; set; }
 
-        public PlayersViewModel()
+        public PlayersViewModel(INavigation navigation)
         {
-            AddPlayerCommand = new Command(() => {
-                SetValue(() => NewPlayerName, string.Empty);
-                SetValue(() => AddingPlayer, true);
-            });
+            Navigation = navigation;
 
+            ShowAddPlayerModalCommand = new Command(async () => await ShowAddPlayerModal());
 
-            CancelAddPlayerCommand = new Command(() =>
-            {
-                SetValue(() => AddingPlayer, false);
-            });
-
-            SavePlayerCommand = new Command(async () => await DoSavePlayerCommand());
             DeletePlayerCommand = new Command(async (o) => await DoDeletePlayerCommand(o));
+
+            MessagingCenter.Subscribe<AddModalViewModel, string>(this, "DoSavePlayer", async(s, a) => await DoSavePlayer(s, a));
+            MessagingCenter.Subscribe<AddModalViewModel>(this, "CancelSavePlayer", async(s) => await CancelSavePlayer(s));
+        }
+
+        public async Task LoadAsync()
+        {
+            var players = await HttpHelper.Instance.GetListAsync<Player>("players");
+            SetValue(() => Players, players);
+        }
+
+        private async Task ShowAddPlayerModal()
+        {
+            await Navigation.PushModalAsync(new AddModal("Player"));
+        }
+
+        private async Task DoSavePlayer(AddModalViewModel sender, string newPlayerName)
+        {
+            await HttpHelper.Instance.PostAsync($"players?name={newPlayerName}", "");
+            await Navigation.PopModalAsync();
+        }
+
+        private async Task CancelSavePlayer(AddModalViewModel sender)
+        {
+            await Navigation.PopModalAsync();
         }
 
         private async Task DoDeletePlayerCommand(object o)
         {
             Player p = o as Player;
             await HttpHelper.Instance.DeleteAsync($"players/{p.PlayerId}");
-            SetValue(() => AddingPlayer, false);
             await LoadAsync();
-        }
-
-        private async Task DoSavePlayerCommand()
-        {
-            await HttpHelper.Instance.PostAsync($"players?name={NewPlayerName}", "");
-            SetValue(() => AddingPlayer, false);
-            await LoadAsync();
-        }
-
-        internal async Task LoadAsync()
-        {
-            var players = await HttpHelper.Instance.GetListAsync<Player>("players");
-            SetValue(() => Players, players);
         }
     }
 }
