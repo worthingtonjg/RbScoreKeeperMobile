@@ -113,6 +113,10 @@
     <BundleResource Include="Resources\xamarin_logo%402x.png" />
     <BundleResource Include="Resources\xamarin_logo%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <BundleResource Include="Resources\delete16.png" />
+    <BundleResource Include="Resources\delete32.png" />
+    <BundleResource Include="Resources\delete64.png" />
+    <BundleResource Include="Resources\delete96.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -129,7 +133,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\RBScoreKeeperMobile\RBScoreKeeperMobile.csproj">
-      <Project>{A1DA7695-EFFD-4BCB-A010-BFC7D765DFE4}</Project>
+      <Project>{AD950F14-620A-4452-8F84-D716672F3AF9}</Project>
       <Name>RBScoreKeeperMobile</Name>
     </ProjectReference>
   </ItemGroup>

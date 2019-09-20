@@ -20,7 +20,9 @@
                         <ViewCell>
                             <Grid Margin="0,5">
                                 <Label Text="{Binding Name}" VerticalOptions="Center" Margin="20,0,0,0"></Label>
-                                <Button Text="x" Command="{Binding Source={x:Reference Root}, Path=BindingContext.DeleteFlicCommand}" CommandParameter="{Binding }"  HorizontalOptions="End"></Button>
+                                <ImageButton Source="delete32.png" BackgroundColor="Transparent"
+                                             HeightRequest="32" WidthRequest="32"
+                                             Command="{Binding Source={x:Reference Root}, Path=BindingContext.DeleteFlicCommand}" CommandParameter="{Binding }"  HorizontalOptions="End"></ImageButton>
                             </Grid>                            
                         </ViewCell>
                     </DataTemplate>

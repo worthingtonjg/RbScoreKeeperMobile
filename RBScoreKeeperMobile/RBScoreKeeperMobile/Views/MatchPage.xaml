@@ -48,7 +48,7 @@
                             <DataTemplate>
                                 <ViewCell>
                                     <StackLayout Orientation="Horizontal" Margin="5">
-                                        <CheckBox IsChecked="{Binding Selected}" Color="DarkGray" WidthRequest="25" />
+                                        <CheckBox IsChecked="{Binding Selected}" Color="DarkGray" WidthRequest="30" />
                                         <Label Text="{Binding Name}" VerticalOptions="Center"></Label>
                                     </StackLayout>
                                 </ViewCell>
