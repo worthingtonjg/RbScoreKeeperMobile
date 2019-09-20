@@ -58,10 +58,10 @@
                     <Button Text="Start Match" Command="{Binding StartMatchCommand}"></Button>
                 </StackLayout>
 
-            <Grid BackgroundColor="White" IsVisible="{Binding Loading}" Grid.RowSpan="2">
-                <ActivityIndicator IsRunning="True"
-                HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></ActivityIndicator>
-            </Grid>
+                <Grid BackgroundColor="White" IsVisible="{Binding Loading}" Grid.RowSpan="2">
+                    <ActivityIndicator IsRunning="True"
+                    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></ActivityIndicator>
+                </Grid>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
