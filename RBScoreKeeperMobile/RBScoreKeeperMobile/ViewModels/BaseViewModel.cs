@@ -9,7 +9,8 @@ namespace RBScoreKeeperMobile.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        protected INavigation Navigation;
+        protected Page Page;
+        protected INavigation Navigation { get { return Page?.Navigation; } }
 
         bool isBusy = false;
         public bool IsBusy

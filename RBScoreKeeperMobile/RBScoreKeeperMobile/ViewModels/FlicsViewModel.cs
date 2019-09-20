@@ -16,9 +16,9 @@ namespace RBScoreKeeperMobile.ViewModels
         public Command ShowAddFlicModalCommand { get; set; }
         public Command DeleteFlicCommand { get; set; }
 
-        public FlicsViewModel(INavigation navigation)
+        public FlicsViewModel(Page page)
         {
-            Navigation = navigation;
+            Page = page;
 
             ShowAddFlicModalCommand = new Command(async () => await ShowAddFlicModal());
             DeleteFlicCommand = new Command(async (o) => await DoDeleteFlicCommand(o));
@@ -36,6 +36,10 @@ namespace RBScoreKeeperMobile.ViewModels
         private async Task DoDeleteFlicCommand(object o)
         {
             Flic f = o as Flic;
+
+            bool confirm = await Page.DisplayAlert("Confirm Delete", $"Delete Flic: {f.Name}", "Accept", "Cancel");
+            if (!confirm) return;
+
             await HttpHelper.Instance.DeleteAsync($"flics/{f.FlicId}");
             await LoadAsync();
         }

@@ -13,7 +13,7 @@ namespace RBScoreKeeperMobile.Views
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new AddModalViewModel(this.Navigation, type);
+            BindingContext = viewModel = new AddModalViewModel(type);
         }
     }
 }

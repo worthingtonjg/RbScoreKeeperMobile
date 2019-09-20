@@ -14,7 +14,7 @@ namespace RBScoreKeeperMobile.Views
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new PlayersViewModel(this.Navigation);
+            BindingContext = viewModel = new PlayersViewModel(this);
         }
 
         protected async override void OnAppearing()

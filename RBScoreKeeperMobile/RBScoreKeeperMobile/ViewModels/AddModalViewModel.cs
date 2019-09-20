@@ -19,9 +19,8 @@ namespace RBScoreKeeperMobile.ViewModels
 
         public Command SaveCommand { get; set; }
         
-        public AddModalViewModel(INavigation navigation, string type)
+        public AddModalViewModel(string type)
         {
-            Navigation = navigation;
             Type = type;
 
             SaveCommand = new Command(() => MessagingCenter.Send(this, $"DoSave{Type}", Name));

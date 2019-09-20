@@ -13,9 +13,9 @@ namespace RBScoreKeeperMobile.ViewModels
         public Command ShowAddPlayerModalCommand { get; set; }
         public Command DeletePlayerCommand { get; set; }
 
-        public PlayersViewModel(INavigation navigation)
+        public PlayersViewModel(Page page)
         {
-            Navigation = navigation;
+            Page = page;
 
             ShowAddPlayerModalCommand = new Command(async () => await ShowAddPlayerModal());
 
@@ -44,6 +44,10 @@ namespace RBScoreKeeperMobile.ViewModels
         private async Task DoDeletePlayerCommand(object o)
         {
             Player p = o as Player;
+
+            bool confirm = await Page.DisplayAlert("Confirm Delete", $"Delete: {p.Name}", "Accept", "Cancel");
+            if (!confirm) return;
+
             await HttpHelper.Instance.DeleteAsync($"players/{p.PlayerId}");
             await LoadAsync();
         }
