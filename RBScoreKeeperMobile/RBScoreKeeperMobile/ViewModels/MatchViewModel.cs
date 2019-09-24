@@ -18,6 +18,8 @@ namespace RBScoreKeeperMobile.ViewModels
         public string RbScoreKeeperSite { get; set; }
         public List<MatchPlayersViewModel> Players { get; set; }
         public int FlicCount { get; set; }
+        public bool OneButtonMode { get; set; }
+        public int WinningScore { get; set; } = 15;
 
         public Command StartMatchCommand { get; set; }
         public Command EndMatchCommand { get; set; }
@@ -43,7 +45,7 @@ namespace RBScoreKeeperMobile.ViewModels
 
             var playerIds = selected.Select(s => s.Id).ToList();
 
-            await HttpHelper.Instance.PostAsync("match/create", playerIds);
+            await HttpHelper.Instance.PostAsync($"match/create?winningScore={WinningScore}&oneButtonMode={OneButtonMode}", playerIds);
             await LoadAsync();
         }
 
@@ -86,7 +88,7 @@ namespace RBScoreKeeperMobile.ViewModels
                 SetValue(() => Players, players.Select(p => new MatchPlayersViewModel(p)).ToList());
             }
 
-            SetValue(() => RbScoreKeeperSite, "https://rbscorekeeper.azurewebsites.net");
+            SetValue(() => RbScoreKeeperSite, "https://rbscorekeeper.azurewebsites.net/mobile");
             SetValue(() => Loading, false);
         }
     }
