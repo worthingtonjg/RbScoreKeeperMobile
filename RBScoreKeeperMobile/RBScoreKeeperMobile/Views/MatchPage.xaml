@@ -58,10 +58,11 @@
                     <Label>Winning Score:</Label>
                     <Entry Text="{Binding WinningScore}"></Entry>
 
-                    <StackLayout Orientation="Horizontal">
-                        <CheckBox IsChecked="{Binding OneButtonMode}" WidthRequest="30" Color="Gray"></CheckBox>
-                        <Label VerticalOptions="Center">One Button Mode</Label>
-                    </StackLayout>
+                    <Grid BackgroundColor="Red">
+                        <Label HorizontalOptions="Start" VerticalOptions="Center">One Button Mode</Label>
+                        <Switch IsToggled="{Binding OneButtonMode}" 
+                                HorizontalOptions="End" VerticalOptions="Center"></Switch>
+                    </Grid>
 
                     <Button Text="Start Match" Command="{Binding StartMatchCommand}"></Button>
                 </StackLayout>
