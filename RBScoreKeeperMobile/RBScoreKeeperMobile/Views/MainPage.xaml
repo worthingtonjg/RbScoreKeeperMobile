@@ -18,7 +18,16 @@
                 <views:MatchPage />
             </x:Arguments>
         </NavigationPage>
-        
+        <NavigationPage Title="Stats">
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="tab_match.png"/>
+                </OnPlatform>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <views:StatsPage />
+            </x:Arguments>
+        </NavigationPage>        
         <NavigationPage Title="Players">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
