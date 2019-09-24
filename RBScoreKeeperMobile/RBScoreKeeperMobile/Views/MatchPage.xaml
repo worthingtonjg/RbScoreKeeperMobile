@@ -60,8 +60,7 @@
 
                     <Grid BackgroundColor="Red">
                         <Label HorizontalOptions="Start" VerticalOptions="Center">One Button Mode</Label>
-                        <Switch IsToggled="{Binding OneButtonMode}" 
-                                HorizontalOptions="End" VerticalOptions="Center"></Switch>
+                        <Switch IsToggled="{Binding OneButtonMode}" HorizontalOptions="End" VerticalOptions="Center"></Switch>
                     </Grid>
 
                     <Button Text="Start Match" Command="{Binding StartMatchCommand}"></Button>
