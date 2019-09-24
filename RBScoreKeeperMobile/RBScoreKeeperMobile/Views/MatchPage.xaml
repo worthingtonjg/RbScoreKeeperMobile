@@ -55,15 +55,24 @@
                         </ListView.ItemTemplate>
                     </ListView>
 
-                    <Label>Winning Score:</Label>
-                    <Entry Text="{Binding WinningScore}"></Entry>
+                    <Frame HeightRequest="220">
+                        <StackLayout>
+                            <Grid HeightRequest="110">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Margin="0,0,5,0" VerticalOptions="Center">Winning Score:</Label>
+                                    <Label Text="{Binding WinningScore}" VerticalOptions="Center"></Label>
+                                </StackLayout>
+                                <Stepper Value="{Binding WinningScore}" VerticalOptions="Center" Minimum="1" Maximum="20" Increment="1" HorizontalOptions="End"></Stepper>
+                            </Grid>
 
-                    <Grid BackgroundColor="Red">
-                        <Label HorizontalOptions="Start" VerticalOptions="Center">One Button Mode</Label>
-                        <Switch IsToggled="{Binding OneButtonMode}" HorizontalOptions="End" VerticalOptions="Center"></Switch>
-                    </Grid>
+                            <Grid HeightRequest="110">
+                                <Label HorizontalOptions="Start" VerticalOptions="Center">One Button Mode:</Label>
+                                <Switch IsToggled="{Binding OneButtonMode}" HorizontalOptions="End" VerticalOptions="Center"></Switch>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
 
-                    <Button Text="Start Match" Command="{Binding StartMatchCommand}"></Button>
+                    <Button Text="Start Match" Command="{Binding StartMatchCommand}" Margin="0,20,0,0"></Button>
                 </StackLayout>
 
                 <Grid BackgroundColor="White" IsVisible="{Binding Loading}" Grid.RowSpan="2">

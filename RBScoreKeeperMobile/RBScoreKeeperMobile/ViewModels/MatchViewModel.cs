@@ -12,6 +12,8 @@ namespace RBScoreKeeperMobile.ViewModels
 {
     public class MatchViewModel : BaseViewModel
     {
+        private int winningScore = 15;
+
         public bool Loading { get; set; }
         public bool MatchIsActive { get; set; }
         public Match Match { get; set; }
@@ -19,7 +21,15 @@ namespace RBScoreKeeperMobile.ViewModels
         public List<MatchPlayersViewModel> Players { get; set; }
         public int FlicCount { get; set; }
         public bool OneButtonMode { get; set; }
-        public int WinningScore { get; set; } = 15;
+        public int WinningScore
+        {
+            get { return winningScore; }
+            set
+            {
+                winningScore = value;
+                OnPropertyChanged("WinningScore");
+            }
+        } 
 
         public Command StartMatchCommand { get; set; }
         public Command EndMatchCommand { get; set; }
