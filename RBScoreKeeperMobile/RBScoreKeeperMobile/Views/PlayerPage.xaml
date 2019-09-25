@@ -20,12 +20,9 @@
                         <ViewCell>
                             <Grid Margin="0,5">
                                 <Label Text="{Binding Name}" VerticalOptions="Center" Margin="20,0,0,0"></Label>
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                                    <Button Text="Photo" Command="{Binding Source={x:Reference Root}, Path=BindingContext.ShowPhotoModalCommand}" CommandParameter="{Binding }"></Button>
                                     <ImageButton Source="delete32.png" BackgroundColor="Transparent"
-                                             HeightRequest="32" WidthRequest="32"
+                                             HeightRequest="32" WidthRequest="32" HorizontalOptions="End"
                                              Command="{Binding Source={x:Reference Root}, Path=BindingContext.DeletePlayerCommand}" CommandParameter="{Binding }"></ImageButton>
-                                </StackLayout>
                             </Grid>                            
                         </ViewCell>
                     </DataTemplate>

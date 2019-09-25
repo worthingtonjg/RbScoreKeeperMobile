@@ -13,7 +13,6 @@ namespace RBScoreKeeperMobile.ViewModels
         public List<Player> Players { get; set; }
         public Command ShowAddPlayerModalCommand { get; set; }
         public Command DeletePlayerCommand { get; set; }
-        public Command ShowPhotoModalCommand { get; set; }
 
         public PlayersViewModel(Page page)
         {
@@ -23,14 +22,7 @@ namespace RBScoreKeeperMobile.ViewModels
 
             DeletePlayerCommand = new Command(async (o) => await DoDeletePlayerCommand(o));
 
-            ShowPhotoModalCommand = new Command(async () => await ShowPhotoModal());
-
             MessagingCenter.Subscribe<AddModalViewModel, string>(this, "DoSavePlayer", async(s, a) => await DoSavePlayer(s, a));
-        }
-
-        private async Task ShowPhotoModal()
-        {
-            await Navigation.PushAsync(new PhotoModal());
         }
 
         public async Task LoadAsync()
