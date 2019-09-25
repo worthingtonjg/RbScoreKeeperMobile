@@ -117,6 +117,13 @@
     <BundleResource Include="Resources\delete32.png" />
     <BundleResource Include="Resources\delete64.png" />
     <BundleResource Include="Resources\delete96.png" />
+    <ImageAsset Include="Assets.xcassets\SplashScreen.imageset\Contents.json" />
+    <BundleResource Include="Resources\01splashscreen.png" />
+    <BundleResource Include="Resources\02splashscreen.png" />
+    <BundleResource Include="Resources\03splashscreen.png" />
+    <ImageAsset Include="Assets.xcassets\SplashScreen.imageset\01splashscreen.png" />
+    <ImageAsset Include="Assets.xcassets\SplashScreen.imageset\02splashscreen.png" />
+    <ImageAsset Include="Assets.xcassets\SplashScreen.imageset\03splashscreen.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -172,5 +179,8 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\tab_stats%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets.xcassets\SplashScreen.imageset\" />
   </ItemGroup>
 </Project>
