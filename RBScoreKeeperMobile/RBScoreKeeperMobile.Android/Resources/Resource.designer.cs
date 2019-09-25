@@ -6451,13 +6451,16 @@ namespace RBScoreKeeperMobile.Droid
 			public const int notify_panel_notification_icon_bg = 2131165500;
 			
 			// aapt resource value: 0x7F07013D
-			public const int tooltip_frame_dark = 2131165501;
+			public const int splashscreen = 2131165501;
 			
 			// aapt resource value: 0x7F07013E
-			public const int tooltip_frame_light = 2131165502;
+			public const int tooltip_frame_dark = 2131165502;
 			
 			// aapt resource value: 0x7F07013F
-			public const int xamarin_logo = 2131165503;
+			public const int tooltip_frame_light = 2131165503;
+			
+			// aapt resource value: 0x7F070140
+			public const int xamarin_logo = 2131165504;
 			
 			static Drawable()
 			{
@@ -8580,6 +8583,9 @@ namespace RBScoreKeeperMobile.Droid
 			
 			// aapt resource value: 0x7F0E00E6
 			public const int RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = 2131624166;
+			
+			// aapt resource value: 0x7F0E0202
+			public const int splashscreen = 2131624450;
 			
 			// aapt resource value: 0x7F0E00E7
 			public const int TextAppearance_AppCompat = 2131624167;
