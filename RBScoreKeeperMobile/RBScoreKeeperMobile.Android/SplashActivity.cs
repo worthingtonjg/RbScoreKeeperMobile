@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace RBScoreKeeperMobile.Droid
 {
-    [Activity(Label = "Mobile App Name", Icon = "@drawable/icon", Theme = "@style/splashscreen", MainLauncher = true, NoHistory = true)]
+    [Activity(Label = "Mobile App Name", Icon = "@mipmap/icon", Theme = "@style/splashscreen", MainLauncher = true, NoHistory = true)]
     public class SplashActivity : AppCompatActivity
     {
         protected override void OnResume()
