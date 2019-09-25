@@ -21,7 +21,7 @@
         <NavigationPage Title="Stats">
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="iOS" Value="tab_match.png"/>
+                    <On Platform="iOS" Value="tab_stats.png"/>
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
