@@ -6,6 +6,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Android.Support.V4.Content;
+using Android.Support.V4.App;
 
 namespace RBScoreKeeperMobile.Droid
 {
@@ -22,6 +24,14 @@ namespace RBScoreKeeperMobile.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
+
+            int requestPermissions = 0;
+            string cameraPermission = Android.Manifest.Permission.Camera;
+
+            if (!(ContextCompat.CheckSelfPermission(this, cameraPermission) == (int)Permission.Granted))
+            {
+                ActivityCompat.RequestPermissions(this, new String[] { cameraPermission, }, requestPermissions);
+            }
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
